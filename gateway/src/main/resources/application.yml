@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: time_counter
+          uri: lb://echo-path-server
+          predicates:
+            - Path=/echo/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/api
+            - TimeCostLog=timecost
