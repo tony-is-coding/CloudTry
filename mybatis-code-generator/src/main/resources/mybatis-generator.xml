@@ -13,7 +13,7 @@
         </jdbcConnection>
 
         <!--生成Entity类（DataObject)存放位置，就是数据库对应的Java DTO的类-->
-        <javaModelGenerator targetPackage="com.cnc.fp.account.dao.dataObject"
+        <javaModelGenerator targetPackage="com.cnc.fp.user.dao.dataObject"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
@@ -26,7 +26,7 @@
         </sqlMapGenerator>
 
         <!--生成的DAO类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cnc.fp.account.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cnc.fp.user.dao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>

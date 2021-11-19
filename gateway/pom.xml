@@ -19,6 +19,12 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>com.cnc</groupId>
+            <artifactId>provider-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <!--api网关-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -86,6 +92,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>3.0.2.1</version>
         </dependency>
     </dependencies>
 

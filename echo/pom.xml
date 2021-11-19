@@ -16,6 +16,12 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.cnc</groupId>
+            <artifactId>provider-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -33,7 +39,6 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <version>0.9.0.RELEASE</version>
         </dependency>
-
     </dependencies>
 
 

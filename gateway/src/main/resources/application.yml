@@ -5,8 +5,30 @@ spring:
         - id: time_counter
           uri: lb://echo-path-server
           predicates:
-            - Path=/echo/**
+            - Path=/api/echo/**
           filters:
             - StripPrefix=1
             - PrefixPath=/api
-            - TimeCostLog=timecost
+            - name: Authorization
+              args:
+                name: auth
+        - id: fp-user
+          uri: lb://fp-user
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=2
+            - PrefixPath=/api
+            - name: Authorization
+              args:
+                name: auth
+
+dubbo:
+  application:
+    name: gateway
+    qos-port: 22201
+    qos-enable: true
+  registry:
+    address: nacos://nacos.tonyiscoding.top:8848?username=nacos&password=nacos
+  consumer:
+    timeout: 3000

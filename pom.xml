@@ -14,7 +14,9 @@
         <module>echo</module>
         <module>basic</module>
         <module>mybatis-code-generator</module>
-        <module>fp-account</module>
+        <module>fp-user</module>
+        <module>dubbo-service-api</module>
+        <module>commons</module>
     </modules>
 
     <dependencies>
@@ -52,6 +54,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

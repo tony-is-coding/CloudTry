@@ -17,12 +17,13 @@ public class TimeCostLogGatewayFilterFactory extends AbstractGatewayFilterFactor
     private static final String REQUEST_TIME_BEGIN = "requestTimeBegin";
 
     public TimeCostLogGatewayFilterFactory() {
-        super(NameConfig.class);
+        super(AbstractGatewayFilterFactory.NameConfig.class);
     }
 
     @Override
     public GatewayFilter apply(AbstractGatewayFilterFactory.NameConfig config) {
         return (exchange, chain) -> {
+            log.info(config.getName() + " executed....");
             exchange.getAttributes().put(REQUEST_TIME_BEGIN, System.currentTimeMillis());
             return chain.filter(exchange).then(
                     Mono.fromRunnable(() -> {
