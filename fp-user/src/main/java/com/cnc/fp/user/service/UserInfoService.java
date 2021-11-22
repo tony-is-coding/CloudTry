@@ -8,5 +8,7 @@ public interface UserInfoService {
 
     Boolean checkIfExist(Integer userId);
 
-    void register(UserInfoBO user);
+    UserInfoBO searchByUserName(String userName);
+
+    UserInfoBO searchByMobile(String mobile);
 }

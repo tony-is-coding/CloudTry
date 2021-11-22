@@ -11,4 +11,8 @@ public interface UserInfoDOMapper {
 
     UserInfoDO selectByPrimaryKey(Integer id);
 
+    UserInfoDO selectByUsername(String userName);
+
+    UserInfoDO selectByMobile(String mobile);
+
 }

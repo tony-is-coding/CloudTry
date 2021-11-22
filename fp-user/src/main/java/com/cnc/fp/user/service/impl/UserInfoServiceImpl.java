@@ -9,14 +9,11 @@ import com.cnc.fp.user.service.bo.UserInfoBO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
+
     @Autowired
     UserInfoDOMapper userInfoDOMapper;
     @Autowired
@@ -28,28 +25,6 @@ public class UserInfoServiceImpl implements UserInfoService {
         return userInfoBO == null;
     }
 
-    private UserInfoDO createUserInfoDo(UserInfoBO userInfo) {
-        UserInfoDO infoDO = new UserInfoDO();
-        if (userInfo == null) {
-            return infoDO;
-        }
-        BeanUtils.copyProperties(userInfo, infoDO);
-        LocalDateTime now = LocalDateTime.now();
-        infoDO.setIsDeleted(Boolean.FALSE);
-        infoDO.setAddDt(now);
-        infoDO.setUpdateDt(now);
-        return infoDO;
-    }
-
-    private UserSecretInfoDO createUserSecretInfoDo(UserInfoBO userInfo) {
-        UserSecretInfoDO infoDO = new UserSecretInfoDO();
-        if (userInfo == null) {
-            return infoDO;
-        }
-        infoDO.setUserId(userInfo.getUserId());
-        infoDO.setEncryptPassword(userInfo.getEncryptPassword());
-        return infoDO;
-    }
 
     private UserInfoBO createUserInfoBo(UserInfoDO userInfoDO, UserSecretInfoDO userSecretInfoDO) {
         UserInfoBO infoBO = new UserInfoBO();
@@ -57,7 +32,7 @@ public class UserInfoServiceImpl implements UserInfoService {
             return infoBO;
         }
         BeanUtils.copyProperties(userSecretInfoDO, infoBO);
-        BeanUtils.copyProperties(userInfoDO,infoBO);
+        BeanUtils.copyProperties(userInfoDO, infoBO);
         return infoBO;
     }
 
@@ -67,9 +42,23 @@ public class UserInfoServiceImpl implements UserInfoService {
         return createUserInfoBo(userInfoDO, userSecretInfoDO);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
-    public void register(UserInfoBO user) {
-        userInfoDOMapper.insert(createUserInfoDo(user));
-        userSecretInfoDOMapper.insert(createUserSecretInfoDo(user));
+    @Override
+    public UserInfoBO searchByUserName(String userName) {
+        UserInfoDO userInfoDO = userInfoDOMapper.selectByUsername(userName);
+        if (userInfoDO == null) {
+            return null;
+        }
+        UserSecretInfoDO userSecretInfoDO = userSecretInfoDOMapper.queryByUserId(userInfoDO.getId());
+        return createUserInfoBo(userInfoDO, userSecretInfoDO);
+    }
+
+    @Override
+    public UserInfoBO searchByMobile(String mobile) {
+        UserInfoDO userInfoDO = userInfoDOMapper.selectByMobile(mobile);
+        if (userInfoDO == null) {
+            return null;
+        }
+        UserSecretInfoDO userSecretInfoDO = userSecretInfoDOMapper.queryByUserId(userInfoDO.getId());
+        return createUserInfoBo(userInfoDO, userSecretInfoDO);
     }
 }

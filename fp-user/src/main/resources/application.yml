@@ -23,7 +23,13 @@ spring:
       maxPoolPreparedStatementPerConnectionSize: 20
       useGlobalDataSourceStat: true
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-
+  redis:
+    host: redis.tonyiscoding.top
+    port: 6379
+    database: 0
+    password: dyn8DUbpzRQvrCxn
+  cache:
+    cache-names: c1
 
 mybatis:
   mapper-locations: classpath:mapping/*.xml

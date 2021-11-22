@@ -1,7 +1,5 @@
 package com.cnc.commons.response;
 
-import lombok.Data;
-
 public class APIResponse<T> extends CommonResponse<T> {
 
     private String errMsg;
@@ -14,9 +12,6 @@ public class APIResponse<T> extends CommonResponse<T> {
     }
 
     public static final APIResponse<String> HTTP_NOT_FOUND = new APIResponse<String>("not found !", 404, "");
-    public static final APIResponse<String> HTTP_BAD_REQUEST = new APIResponse<String>("bad request !", 400, "");
-    public static final APIResponse<String> HTTP_NOT_AUTHED = new APIResponse<String>("not authorization", 401, "");
-
 
     public APIResponse(String errMsg, Integer statusCode, T data) {
         this.errMsg = errMsg;
@@ -24,6 +19,13 @@ public class APIResponse<T> extends CommonResponse<T> {
         this.data = data;
     }
 
+    public static <T> APIResponse<T> unAuthorization(String errMsg) {
+        return new APIResponse<T>(errMsg, 401, null);
+    }
+
+    public static <T> APIResponse<T> badRequest(String errMsg) {
+        return new APIResponse<T>(errMsg, 400, null);
+    }
 
     public String getErrMsg() {
         return errMsg;

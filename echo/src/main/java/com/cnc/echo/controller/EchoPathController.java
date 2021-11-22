@@ -25,5 +25,4 @@ public class EchoPathController {
         UserInfoDTO userInfo = JSON.parseObject(userInfoJsonBytes, UserInfoDTO.class);
         return APIResponse.httpOK(userInfo);
     }
-
 }

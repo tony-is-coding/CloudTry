@@ -12,10 +12,9 @@
     <modules>
         <module>gateway</module>
         <module>echo</module>
-        <module>basic</module>
         <module>mybatis-code-generator</module>
         <module>fp-user</module>
-        <module>dubbo-service-api</module>
+        <module>provider-api</module>
         <module>commons</module>
     </modules>
 
