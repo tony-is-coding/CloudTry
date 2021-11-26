@@ -14,7 +14,7 @@ public class AESUtil {
     /**
      * 生成密钥
      *
-     * @throws Exception
+     * @throws NoSuchAlgorithmException
      */
     public static byte[] generateKey() throws NoSuchAlgorithmException {
         //密钥生成器

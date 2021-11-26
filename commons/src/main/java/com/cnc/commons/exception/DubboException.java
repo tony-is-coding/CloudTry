@@ -1,4 +1,4 @@
 package com.cnc.commons.exception;
 
-public class DubboException {
+public class DubboException extends CommonException {
 }

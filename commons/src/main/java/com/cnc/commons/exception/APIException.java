@@ -1,4 +1,5 @@
 package com.cnc.commons.exception;
 
-public class APIException {
+public class APIException extends CommonException {
+
 }

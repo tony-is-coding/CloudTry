@@ -13,9 +13,12 @@
         <module>gateway</module>
         <module>echo</module>
         <module>mybatis-code-generator</module>
-        <module>fp-user</module>
+        <module>user</module>
         <module>provider-api</module>
         <module>commons</module>
+        <module>product</module>
+        <module>order</module>
+        <module>inner-sdk</module>
     </modules>
 
     <dependencies>

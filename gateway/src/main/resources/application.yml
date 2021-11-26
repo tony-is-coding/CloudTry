@@ -12,8 +12,8 @@ spring:
             - name: Authorization
               args:
                 name: auth
-        - id: fp-user
-          uri: lb://fp-user
+        - id: user
+          uri: lb://user
           predicates:
             - Path=/api/user/**
           filters:

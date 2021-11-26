@@ -13,7 +13,7 @@
         </jdbcConnection>
 
         <!--生成Entity类（DataObject)存放位置，就是数据库对应的Java DTO的类-->
-        <javaModelGenerator targetPackage="com.cnc.fp.user.dao.dataObject"
+        <javaModelGenerator targetPackage="com.cnc.fp.user.dao.po"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />

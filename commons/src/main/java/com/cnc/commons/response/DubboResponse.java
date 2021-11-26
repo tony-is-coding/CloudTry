@@ -1,9 +1,9 @@
 package com.cnc.commons.response;
 
-import lombok.Data;
 
 
 public class DubboResponse<T> extends CommonResponse<T> {
+
     private String errMsg;
     private Integer statusCode;
     private T data;
